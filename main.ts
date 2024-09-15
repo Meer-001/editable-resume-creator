@@ -4,18 +4,19 @@
 document.getElementById('resume')?.addEventListener('submit',function(event){
     event.preventDefault()
 
-    const nameElement = document.getElementById('name') as HTMLInputElement
-    const fNameElement = document.getElementById('fathername') as HTMLInputElement
-    const emailElement = document.getElementById('email') as HTMLInputElement
-    const contactElement = document.getElementById('number') as HTMLInputElement
-    const addressElement = document.getElementById('address') as HTMLInputElement
-    const educationElement = document.getElementById('education') as HTMLInputElement
-    const experienceElement = document.getElementById('experience') as HTMLInputElement
-    const skillElement = document.getElementById('skill') as HTMLInputElement
+    const profilePictureElement =document.getElementById('profilePicture') as HTMLInputElement;
+    const nameElement = document.getElementById('name') as HTMLInputElement;
+    const fNameElement = document.getElementById('fathername') as HTMLInputElement;
+    const emailElement = document.getElementById('email') as HTMLInputElement;
+    const contactElement = document.getElementById('number') as HTMLInputElement;
+    const addressElement = document.getElementById('address') as HTMLInputElement;
+    const educationElement = document.getElementById('education') as HTMLInputElement;
+    const experienceElement = document.getElementById('experience') as HTMLInputElement;
+    const skillElement = document.getElementById('skill') as HTMLInputElement;
 
     //creating output
 
-    if(nameElement && fNameElement && emailElement && contactElement && addressElement && educationElement &&experienceElement &&skillElement){
+    if(profilePictureElement && nameElement && fNameElement && emailElement && contactElement && addressElement && educationElement &&experienceElement &&skillElement){
         const name= nameElement.value
         const fName= fNameElement.value
         const email= emailElement.value
@@ -24,10 +25,14 @@ document.getElementById('resume')?.addEventListener('submit',function(event){
         const education= educationElement.value
         const experience= experienceElement.value
         const skill= skillElement.value
+        const profilePictureFile = profilePictureElement.files?.[0]
+        const profilePictureURL = profilePictureFile ? URL.createObjectURL(profilePictureFile) :'';
     
 
     const generatedOutput = `
     <h2>My Resume </h2>
+
+    ${profilePictureURL} ? '<img src ='${profilePictureURL} alt='Profile Picture' class='profilePicture'>':''}
     <p><strong> Name: </strong> <span id='edit-name' class='editable'> ${name}</span></p>
     <p><strong> Father Name: </strong><span id='edit-father-name' class='editable'> ${fName}</span></p>
     <p><strong> Email address: </strong><span id='edit-email-address' class='editable'> ${email}</span></p>

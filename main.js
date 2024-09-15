@@ -2,7 +2,9 @@
 // preventdefault is liye hota takay form submit hoty hway page reload na ho
 var _a;
 (_a = document.getElementById('resume')) === null || _a === void 0 ? void 0 : _a.addEventListener('submit', function (event) {
+    var _a;
     event.preventDefault();
+    var profilePictureElement = document.getElementById('profilePicture');
     var nameElement = document.getElementById('name');
     var fNameElement = document.getElementById('fathername');
     var emailElement = document.getElementById('email');
@@ -12,7 +14,7 @@ var _a;
     var experienceElement = document.getElementById('experience');
     var skillElement = document.getElementById('skill');
     //creating output
-    if (nameElement && fNameElement && emailElement && contactElement && addressElement && educationElement && experienceElement && skillElement) {
+    if (profilePictureElement && nameElement && fNameElement && emailElement && contactElement && addressElement && educationElement && experienceElement && skillElement) {
         var name_1 = nameElement.value;
         var fName = fNameElement.value;
         var email = emailElement.value;
@@ -21,7 +23,9 @@ var _a;
         var education = educationElement.value;
         var experience = experienceElement.value;
         var skill = skillElement.value;
-        var generatedOutput = "\n    <h2>My Resume </h2>\n    <p><strong> Name: </strong> <span id='edit-name' class='editable'> ".concat(name_1, "</span></p>\n    <p><strong> Father Name: </strong><span id='edit-father-name' class='editable'> ").concat(fName, "</span></p>\n    <p><strong> Email address: </strong><span id='edit-email-address' class='editable'> ").concat(email, "</span></p>\n    <p><strong> Contact Number: </strong><span id='edit-contact' class='editable'> ").concat(contact, "</span></p>\n    <p><strong> Address: </strong><span id='edit-address' class='editable'> ").concat(address, "</span></p>\n    \n    <h3> Education:</h3> \n    <p id='edit-education' class='editable'>").concat(education, "</p>\n    <h3> Experience:</h3> \n    <p id='edit-experience' class='editable'>").concat(experience, "</p>\n    <h3> Skills:</h3> \n    <p id='edit-skills' class='editable'>").concat(skill, "</p>\n   ");
+        var profilePictureFile = (_a = profilePictureElement.files) === null || _a === void 0 ? void 0 : _a[0];
+        var profilePictureURL = profilePictureFile ? URL.createObjectURL(profilePictureFile) : '';
+        var generatedOutput = "\n    <h2>My Resume </h2>\n\n    ".concat(profilePictureURL, " ? '<img src ='").concat(profilePictureURL, " alt='Profile Picture' class='profilePicture'>':''}\n    <p><strong> Name: </strong> <span id='edit-name' class='editable'> ").concat(name_1, "</span></p>\n    <p><strong> Father Name: </strong><span id='edit-father-name' class='editable'> ").concat(fName, "</span></p>\n    <p><strong> Email address: </strong><span id='edit-email-address' class='editable'> ").concat(email, "</span></p>\n    <p><strong> Contact Number: </strong><span id='edit-contact' class='editable'> ").concat(contact, "</span></p>\n    <p><strong> Address: </strong><span id='edit-address' class='editable'> ").concat(address, "</span></p>\n    \n    <h3> Education:</h3> \n    <p id='edit-education' class='editable'>").concat(education, "</p>\n    <h3> Experience:</h3> \n    <p id='edit-experience' class='editable'>").concat(experience, "</p>\n    <h3> Skills:</h3> \n    <p id='edit-skills' class='editable'>").concat(skill, "</p>\n   ");
         var resumeOutputElement = document.getElementById('generatedOutput');
         if (resumeOutputElement) {
             resumeOutputElement.innerHTML = generatedOutput;
