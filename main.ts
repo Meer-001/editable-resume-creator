@@ -26,7 +26,7 @@ document.getElementById('resume')?.addEventListener('submit',function(event){
         const experience= experienceElement.value
         const skill= skillElement.value
         const profilePictureFile = profilePictureElement.files?.[0]
-        const profilePictureURL = profilePictureFile ? URL.createObjectURL(profilePictureFile) :'';
+        const profilePictureURL = profilePictureFile ? window.URL.createObjectURL(profilePictureFile) :'';
     
 
     const generatedOutput = `
